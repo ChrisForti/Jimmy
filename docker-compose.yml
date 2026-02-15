@@ -19,6 +19,23 @@ services:
     depends_on:
       - ollama
 
+  agent:
+    build: ./agent
+    container_name: jimmy-agent
+    ports:
+      - "3141:3141"
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+      - OLLAMA_MODEL=llama3.2
+      - AGENT_PERSONA_PATH=/app/prompts/agent-persona.md
+      - AGENT_DATA_DIR=/app/data/sessions
+    volumes:
+      - ./prompts:/app/prompts:ro
+      - agent_sessions:/app/data
+    depends_on:
+      - ollama
+
 volumes:
   ollama_storage:
   webui_storage:
+  agent_sessions:

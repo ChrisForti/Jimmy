@@ -26,6 +26,9 @@ npm-debug.log*
 # Docker
 .docker/
 
+# Agent session data (local runs)
+agent/data/
+
 # Misc
 *.tgz
 .cache/
