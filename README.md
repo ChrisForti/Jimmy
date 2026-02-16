@@ -27,15 +27,17 @@ docker compose up -d
 
   **Agent persona**: Edit `prompts/agent-persona.md` to define who the agent is and how it should behave; the agent loads it at startup (via the mounted `prompts/` volume).
 
+  **Speech output**: Set `ENABLE_SPEECH=true` in `docker-compose.yml` to have the agent speak responses aloud (macOS only, requires `say` command).
+
 ### Models
 
 Pull a model into Ollama (one-time), then choose it in Open WebUI or set `OLLAMA_MODEL` for the agent in `docker-compose.yml`.
 
-| Model           | Pull command                              | Notes                    |
-|----------------|-------------------------------------------|--------------------------|
-| Llama 3.2       | `docker exec -it ollama ollama pull llama3.2`       | Default, good tool use   |
-| DeepSeek R1     | `docker exec -it ollama ollama pull deepseek-r1`   | Strong reasoning         |
-| DeepSeek V3     | `docker exec -it ollama ollama pull deepseek-v3`   | Large MoE (671B)         |
+| Model       | Pull command                                     | Notes                  |
+| ----------- | ------------------------------------------------ | ---------------------- |
+| Llama 3.2   | `docker exec -it ollama ollama pull llama3.2`    | Default, good tool use |
+| DeepSeek R1 | `docker exec -it ollama ollama pull deepseek-r1` | Strong reasoning       |
+| DeepSeek V3 | `docker exec -it ollama ollama pull deepseek-v3` | Large MoE (671B)       |
 
 DeepSeek v3.2 is cloud-only on Ollama and often fails to pull locally; use `deepseek-r1` or `deepseek-v3` instead.
 

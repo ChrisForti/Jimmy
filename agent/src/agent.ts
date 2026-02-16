@@ -1,9 +1,11 @@
 import { Ollama, type Message } from "ollama";
 import { getToolsSchema, runTool } from "./tools.js";
 import { getSystemPrompt } from "./persona.js";
+import { speak } from "./utils/speech.js";
 
 const MODEL = process.env.OLLAMA_MODEL ?? "llama3.2";
 const OLLAMA_HOST = process.env.OLLAMA_HOST ?? "http://localhost:11434";
+const ENABLE_SPEECH = process.env.ENABLE_SPEECH === "true";
 
 const client = new Ollama({ host: OLLAMA_HOST });
 const tools = getToolsSchema();
@@ -36,6 +38,9 @@ export async function chat(
     const toolCalls = msg.tool_calls ?? [];
     if (toolCalls.length === 0) {
       const reply = (msg.content ?? "").trim() || "No response.";
+      if (ENABLE_SPEECH) {
+        speak(reply);
+      }
       return { reply, newMessages: messages.slice(1) };
     }
 

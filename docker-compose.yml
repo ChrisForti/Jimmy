@@ -27,6 +27,7 @@ services:
     environment:
       - OLLAMA_HOST=http://ollama:11434
       - OLLAMA_MODEL=llama3.2
+      - ENABLE_SPEECH=false
       - AGENT_PERSONA_PATH=/app/prompts/agent-persona.md
       - AGENT_DATA_DIR=/app/data/sessions
     volumes:
