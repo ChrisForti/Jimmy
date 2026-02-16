@@ -14,7 +14,7 @@ export type ChatResult = { reply: string; newMessages: Message[] };
 
 export async function chat(
   userMessage: string,
-  history: Message[] = []
+  history: Message[] = [],
 ): Promise<ChatResult> {
   const systemPrompt = getSystemPrompt();
   const messages: Message[] = [
