@@ -1,6 +1,7 @@
 import express from "express";
 import { chat } from "./agent.js";
 import { loadSession, saveSession } from "./store.js";
+import { startScheduler } from "./scheduler.js";
 
 const app = express();
 app.use(express.json());
@@ -28,4 +29,7 @@ app.post("/chat", async (req, res) => {
 const port = Number(process.env.PORT) || 3141;
 app.listen(port, () => {
   console.log(`Agent listening on http://localhost:${port}`);
+
+  // Start autonomous scheduler
+  startScheduler();
 });

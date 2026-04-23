@@ -1,8 +1,16 @@
 # Jimmy
 
-I'm playing around with creating a **standalone AI agent** — that's what this project is.
+**Jimmy** is an autonomous AI agent designed to run on a Raspberry Pi and manage a Print on Demand (POD) business. The agent performs market trend analysis for products like shirts and stationary using Printful, and integrates with an existing site and API (@4dthreads dev).
 
-Stack: **React, Node, TypeScript.**
+**Stack:** React, Node, TypeScript
+
+## Project Overview
+
+- **Deployment**: Runs autonomously on Raspberry Pi
+- **Remote Access**: Manage from Mac via SSH
+- **Primary Function**: POD site management and trend analysis
+- **Integration**: Works with existing site/API infrastructure
+- **Products**: Focuses on shirts and stationary via Printful API
 
 ## Guidelines
 
@@ -45,4 +53,60 @@ To stop:
 
 ```bash
 docker compose down
+```
+
+## Raspberry Pi Deployment
+
+### Prerequisites
+
+Install dependencies on your Pi:
+
+```bash
+# Docker and Docker Compose
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo usermod -aG docker pi
+
+# Node.js (if needed outside Docker)
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
+### Remote Access
+
+Find your Pi's IP address:
+
+```bash
+hostname -I
+```
+
+SSH from your Mac:
+
+```bash
+ssh pi@<PI_IP_ADDRESS>
+```
+
+Deploy to Pi:
+
+```bash
+# Clone repo on Pi
+git clone <repository-url> ~/jimmy
+cd ~/jimmy
+
+# Start services
+docker compose up -d
+```
+
+### Integration with 4dthreads
+
+Jimmy integrates with your existing POD infrastructure:
+
+- **API** (Railway): Set `FOURTHREADS_API_URL` in `docker-compose.yml` to your Railway API endpoint
+- **Site** (GitHub): Frontend hosted separately
+- **Printful credentials**: Stored in your API's .env on Railway
+
+Update the API URL in `docker-compose.yml`:
+
+```yaml
+- FOURTHREADS_API_URL=https://your-api.railway.app
 ```
