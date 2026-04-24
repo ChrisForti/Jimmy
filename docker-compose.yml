@@ -26,7 +26,7 @@ services:
       - "3141:3141"
     environment:
       - OLLAMA_HOST=http://ollama:11434
-      - OLLAMA_MODEL=phi3:mini
+      - OLLAMA_MODEL=llama3.2:1b
       - ENABLE_SPEECH=false
       - AGENT_PERSONA_PATH=/app/prompts/agent-persona.md
       - AGENT_DATA_DIR=/app/data/sessions
