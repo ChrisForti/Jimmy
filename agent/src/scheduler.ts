@@ -13,7 +13,7 @@ async function runMarketAnalysis() {
   const prompt = `You are Jimmy, an autonomous POD business agent. Your task:
 
 1. Research current trending topics and products online
-2. Identify profitable shirt and stationary designs
+2. Identify profitable designs for: shirts, stationary, mugs, sportfishing boat parts, and boat cosmetic repairs/upgrades
 3. Use the Railway API to check what products exist
 4. Create new trending products if opportunities found
 5. Report your findings and actions taken
