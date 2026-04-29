@@ -15,6 +15,20 @@
       "when": 1777426025929,
       "tag": "0001_melted_orphan",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1777505265178,
+      "tag": "0002_silent_cammi",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1777506004282,
+      "tag": "0003_strong_sauron",
+      "breakpoints": true
     }
   ]
 }
