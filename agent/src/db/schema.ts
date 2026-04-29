@@ -8,6 +8,7 @@ export const marketOpportunities = pgTable("market_opportunities", {
   // Core Opportunity (per Jimmy Guidelines Section 4)
   opportunity: text("opportunity").notNull(), // e.g., "14' Wood Touring SUP"
   marketWhy: text("market_why"), // Data supporting demand
+  sourceOrigin: text("source_origin"), // Primary source citation (e.g., "NMMA 2026 Report", "Etsy Trending")
   materialRecommendation: text("material_recommendation"), // Wood/finish combo
   cncEdge: text("cnc_edge"), // How 3018 Pro adds value
   targetBuyerPersona: text("target_buyer_persona"), // Who buys & what they value

@@ -33,11 +33,19 @@ Return 5-10 HIGH-VALUE opportunities with supporting market data.`,
 
 Your expertise covers: Hollow-wood, Cedar-strip, Cold-molded, and CNC-integrated composite artisan builds.
 
+CRITICAL: For EVERY opportunity, you MUST cite the primary data source(s). Examples:
+- "NMMA 2026 Boating Market Report"
+- "Etsy Trending Products Q1 2026"
+- "Verified Market Research SUP Industry Analysis"
+- "Instagram #woodenSUP trend analysis"
+- "Grand View Research Watersports Report"
+
 For EVERY research cycle, return a JSON object with a "results" array. Each opportunity must follow this EXACT structure:
 
 {
   "opportunity": "14' Hollow-Wood Touring SUP with Tech Integration",
   "marketWhy": "2026 data shows 34% increase in luxury touring board sales, with customers specifically seeking 14' displacement hulls for stability and speed. Instagram hashtag #woodenSUP has 2.3M posts with 'touring' as dominant category.",
+  "sourceOrigin": "NMMA 2026 Boating Market Report, Instagram Analytics #woodenSUP, Verified Market Research",
   "materialRecommendation": "Western Red Cedar hull with Dark Walnut racing stripe and accent rails. Bio-epoxy eco-luxe finish (matte) appeals to sustainability-conscious luxury buyers.",
   "cncEdge": "Use 3018 Pro to mill custom GPS mount plates (StarBoard), personalized nameplate inlays (Teak/Walnut), and precision-cut decorative animal motifs for premium customization.",
   "targetBuyerPersona": "Affluent outdoor enthusiasts, 35-55, value craftsmanship and sustainability, willing to pay $4500-6500 for heirloom-quality boards. Priority: aesthetics + performance.",
