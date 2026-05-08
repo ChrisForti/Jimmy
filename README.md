@@ -22,18 +22,21 @@
 The system runs **three specialized agents** on different schedules:
 
 ### 1. SUP Agent (Stand-Up Paddleboards)
+
 - **Schedule**: Every 6 hours
 - **Focus**: Wooden SUPs (Touring, Displacement, All-around hulls)
 - **Table**: `standup_opportunities`
 - **Markets**: High-end artisan paddleboards, hollow-wood construction
 
 ### 2. Surfboard Agent (Eco & Wooden Surfboards)
+
 - **Schedule**: Daily at 9 AM
 - **Focus**: Eco surf, wooden surfboards, sustainable materials
 - **Table**: `surfboard_opportunities`
 - **Markets**: Paulownia, balsa, bamboo boards, fish/longboard/mid-length shapes
 
 ### 3. Kayak/Canoe Agent (Wooden Boats)
+
 - **Schedule**: Every 2 days at 10 AM
 - **Focus**: Cedar-strip kayaks & canoes, traditional boat building
 - **Table**: `kayak_opportunities`
@@ -165,6 +168,7 @@ The system uses **three separate tables** in Railway PostgreSQL to track differe
 ### 1. `standup_opportunities` - SUP Market Research
 
 **Core Opportunity Fields**:
+
 - **opportunity**: High-value build opportunity (e.g., "14' Hollow-Wood Touring SUP")
 - **sourceOrigin**: Primary data source citations (NMMA reports, Etsy trends, etc.)
 - **marketWhy**: Data supporting demand
@@ -228,6 +232,7 @@ The system uses **three separate tables** in Railway PostgreSQL to track differe
    ```
 
    Add:
+
    ```
    DATABASE_URL=postgresql://postgres:password@host.railway.app:port/railway
    TAVILY_API_KEY=tvly-xxxxxxxxxxxxx
@@ -251,11 +256,13 @@ The system uses **three separate tables** in Railway PostgreSQL to track differe
 ### Regular Operation
 
 **View logs:**
+
 ```bash
 docker logs market-analyzer-agent -f
 ```
 
 **Restart after pulling updates:**
+
 ```bash
 cd ~/market-analyzer
 git pull
@@ -264,6 +271,7 @@ docker compose up -d --build
 ```
 
 **Access Adminer (Database UI):**
+
 - URL: `http://<pi-ip>:8081`
 - Server: `<railway-host>:port`
 - Username: `postgres`
@@ -296,6 +304,7 @@ Each agent follows the same structured approach:
 - Focus on boutique/artisan markets (not mass production)
 
 **Customize agents:**
+
 - SUP: [src/agents/sup-market.ts](agent/src/agents/sup-market.ts)
 - Surfboard: [src/agents/surfboard.ts](agent/src/agents/surfboard.ts)
 - Kayak/Canoe: [src/agents/kayak.ts](agent/src/agents/kayak.ts)
