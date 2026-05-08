@@ -14,6 +14,7 @@ COPY drizzle ./drizzle
 COPY drizzle.config.ts ./
 COPY migrate.ts ./
 COPY test-apis.ts ./
+COPY run-kayak.ts ./
 
 # Build TypeScript
 RUN npm run build
