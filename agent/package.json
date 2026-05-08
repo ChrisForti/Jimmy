@@ -8,7 +8,8 @@
     "dev": "tsx watch src/index.ts",
     "test:apis": "tsx test-apis.ts",
     "db:generate": "drizzle-kit generate:pg",
-    "db:migrate": "tsx migrate.ts"
+    "db:migrate": "tsx migrate.ts",
+    "run:kayak": "tsx run-kayak.ts"
   },
   "dependencies": {
     "@tavily/core": "^0.7.2",
