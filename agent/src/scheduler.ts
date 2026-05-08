@@ -94,10 +94,3 @@ export function startScheduler() {
   console.log("  - Surfboard analysis: daily at 9 AM");
   console.log("  - Kayak/Canoe analysis: every 2 days at 10 AM");
 }
-    runSurfboardAnalysis();
-  }
-
-  console.log("[Scheduler] Scheduled:");
-  console.log("  - SUP analysis: every 6 hours");
-  console.log("  - Surfboard analysis: daily at 9 AM");
-}
