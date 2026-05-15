@@ -1,20 +1,13 @@
 # Multi-stage build for efficient image size
 FROM node:20-slim AS builder
 
-# Install dependencies for native modules
-RUN apt-get update && apt-get install -y \
-    python3 \
-    make \
-    g++ \
-    && rm -rf /var/lib/apt/lists/*
-
 WORKDIR /app
 
 # Copy package files
 COPY package*.json ./
 COPY tsconfig.json ./
 
-# Install dependencies
+# Install dependencies (including dev dependencies for build)
 RUN npm ci
 
 # Copy source code
