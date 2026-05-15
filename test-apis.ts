@@ -93,7 +93,9 @@ async function testDatabase() {
     console.log(`   ${error.message}\n`);
     return false;
   }
-} // Run all tests
+}
+
+// Run all tests
 async function runTests() {
   const tavilyOk = await testTavily();
   const openRouterOk = await testOpenRouter();

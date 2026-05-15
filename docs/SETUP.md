@@ -198,18 +198,3 @@ npm install
 
 - Tavily works best with keyword-rich queries
 - The agent already has an optimized `tavilyQuery` field
-- Free tier: 1,000 searches/month is plenty for Jimmy
-- Check usage at [tavily.com/dashboard](https://tavily.com/dashboard)
-
-### OpenRouter Model Selection
-
-Default model (Gemini 2.0 Flash) is FREE and fast. If you need better analysis:
-
-- `google/gemini-1.5-flash` - $0.075 per 1M tokens (still very cheap)
-- `anthropic/claude-3.5-sonnet` - $3 per 1M tokens (premium quality)
-
-Change in `.env`:
-
-```bash
-OPENROUTER_MODEL=anthropic/claude-3.5-sonnet
-```

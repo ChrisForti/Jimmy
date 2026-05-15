@@ -106,7 +106,6 @@ Research is constrained/optimized by actual shop capabilities:
 ### 1. Install Dependencies
 
 ```bash
-cd agent
 npm install
 ```
 
@@ -305,9 +304,9 @@ Each agent follows the same structured approach:
 
 **Customize agents:**
 
-- SUP: [src/agents/sup-market.ts](agent/src/agents/sup-market.ts)
-- Surfboard: [src/agents/surfboard.ts](agent/src/agents/surfboard.ts)
-- Kayak/Canoe: [src/agents/kayak.ts](agent/src/agents/kayak.ts)
+- SUP: [src/agents/sup-market.ts](src/agents/sup-market.ts)
+- Surfboard: [src/agents/surfboard.ts](src/agents/surfboard.ts)
+- Kayak/Canoe: [src/agents/kayak.ts](src/agents/kayak.ts)
 
 # On Pi:
 

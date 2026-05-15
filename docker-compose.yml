@@ -1,6 +1,6 @@
 services:
   agent:
-    build: ./agent
+    build: .
     container_name: market-analyzer-agent
     ports:
       - "3141:3141"

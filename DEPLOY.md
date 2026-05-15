@@ -67,8 +67,11 @@ docker compose up -d --build agent
 # Run a one-time search
 docker compose exec agent npm run dev
 
-# Check database
-docker compose exec postgres psql -U market_analyzer -d market_analyzer -c "SELECT * FROM market_opportunities;"
+# Check database (view SUP opportunities)
+docker compose exec postgres psql -U market_analyzer -d market_analyzer -c "SELECT * FROM standup_opportunities ORDER BY timestamp DESC LIMIT 5;"
+
+# Or view all tables
+docker compose exec postgres psql -U market_analyzer -d market_analyzer -c "\dt"
 ```
 
 ## Cost
