@@ -102,8 +102,12 @@ REQUIRED FORMAT - Return a JSON object with a "results" array containing 5-10 op
     console.log("\n🔍 Raw LLM Response:");
     console.log(rawContent.substring(0, 500)); // First 500 chars for debugging
     
-    // Strip markdown code fences if present
-    rawContent = rawContent.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+    // Extract JSON from response (handles markdown fences and preamble text)
+    const jsonMatch = rawContent.match(/\{[\s\S]*\}/);
+    if (!jsonMatch) {
+      throw new Error("No JSON object found in LLM response");
+    }
+    rawContent = jsonMatch[0];
     
     const data = JSON.parse(rawContent);
     const results = Array.isArray(data) ? data : data.results || [];
