@@ -74,7 +74,11 @@ Based on this current 2026 market data, provide your structured analysis as JSON
       response_format: { type: "json_object" },
     });
 
-    const data = JSON.parse(response.choices[0].message.content || "{}");
+    const rawContent = response.choices[0].message.content || "{}";
+    console.log("\n🔍 Raw LLM Response:");
+    console.log(rawContent.substring(0, 500)); // First 500 chars for debugging
+    
+    const data = JSON.parse(rawContent);
     const results = Array.isArray(data) ? data : data.results || [];
 
     console.log("\n📊 Market Analysis:");
