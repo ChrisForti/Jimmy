@@ -68,55 +68,13 @@ ${tavilyAnswer}
 Detailed Sources:
 ${searchContext}
 
-Based on this current 2026 market data, provide your structured analysis as a JSON object.
-
-REQUIRED FORMAT - Return a JSON object with a "results" array containing 5-10 opportunities:
-{
-  "results": [
-    {
-      "opportunity": "...",
-      "marketWhy": "...",
-      "sourceOrigin": "...",
-      "materialRecommendation": "...",
-      "cncEdge": "...",
-      "targetBuyerPersona": "...",
-      "craftType": "...",
-      "hullType": "...",
-      "constructionMethod": "...",
-      "length": "...",
-      "width": "...",
-      "primaryWood": "...",
-      "accentWood": "...",
-      "finishTrend": "...",
-      "pricePoint": "...",
-      "marketSentiment": "...",
-      "luxuryFeatures": "..."
-    }
-  ]
-}`,
+Based on this current 2026 market data, provide your structured analysis as JSON.`,
         },
       ],
+      response_format: { type: "json_object" },
     });
 
-    let rawContent = response.choices[0].message.content || "{}";
-    
-    // Strip markdown code fences if present
-    rawContent = rawContent.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
-    
-    // Find the start of JSON (first '{')
-    const jsonStart = rawContent.indexOf('{');
-    if (jsonStart === -1) {
-      console.error("\n🔍 Raw LLM Response:", rawContent.substring(0, 500));
-      throw new Error("No JSON object found in LLM response");
-    }
-    
-    // Extract from first '{' to end
-    rawContent = rawContent.substring(jsonStart);
-    
-    console.log("\n🔍 Extracted JSON (first 500 chars):");
-    console.log(rawContent.substring(0, 500));
-    
-    const data = JSON.parse(rawContent);
+    const data = JSON.parse(response.choices[0].message.content || "{}");
     const results = Array.isArray(data) ? data : data.results || [];
 
     console.log("\n📊 Market Analysis:");
