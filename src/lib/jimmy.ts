@@ -68,10 +68,34 @@ ${tavilyAnswer}
 Detailed Sources:
 ${searchContext}
 
-Based on this current 2026 market data, provide your structured analysis as JSON.`,
+Based on this current 2026 market data, provide your structured analysis as a JSON object.
+
+REQUIRED FORMAT - Return a JSON object with a "results" array containing 5-10 opportunities:
+{
+  "results": [
+    {
+      "opportunity": "...",
+      "marketWhy": "...",
+      "sourceOrigin": "...",
+      "materialRecommendation": "...",
+      "cncEdge": "...",
+      "targetBuyerPersona": "...",
+      "craftType": "...",
+      "hullType": "...",
+      "constructionMethod": "...",
+      "length": "...",
+      "width": "...",
+      "primaryWood": "...",
+      "accentWood": "...",
+      "finishTrend": "...",
+      "pricePoint": "...",
+      "marketSentiment": "...",
+      "luxuryFeatures": "..."
+    }
+  ]
+}`,
         },
       ],
-      response_format: { type: "json_object" },
     });
 
     const rawContent = response.choices[0].message.content || "{}";
