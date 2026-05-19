@@ -99,18 +99,22 @@ REQUIRED FORMAT - Return a JSON object with a "results" array containing 5-10 op
     });
 
     let rawContent = response.choices[0].message.content || "{}";
-    console.log("\n🔍 Raw LLM Response:");
-    console.log(rawContent.substring(0, 500)); // First 500 chars for debugging
     
-    // First, strip markdown code fences if present
-    rawContent = rawContent.replace(/```json\n?/g, '').replace(/```/g, '').trim();
+    // Strip markdown code fences if present
+    rawContent = rawContent.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
     
-    // Then extract JSON object from any remaining text
-    const jsonMatch = rawContent.match(/\{[\s\S]*\}/);
-    if (!jsonMatch) {
+    // Find the start of JSON (first '{')
+    const jsonStart = rawContent.indexOf('{');
+    if (jsonStart === -1) {
+      console.error("\n🔍 Raw LLM Response:", rawContent.substring(0, 500));
       throw new Error("No JSON object found in LLM response");
     }
-    rawContent = jsonMatch[0];
+    
+    // Extract from first '{' to end
+    rawContent = rawContent.substring(jsonStart);
+    
+    console.log("\n🔍 Extracted JSON (first 500 chars):");
+    console.log(rawContent.substring(0, 500));
     
     const data = JSON.parse(rawContent);
     const results = Array.isArray(data) ? data : data.results || [];
