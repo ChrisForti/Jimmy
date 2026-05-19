@@ -98,9 +98,12 @@ REQUIRED FORMAT - Return a JSON object with a "results" array containing 5-10 op
       ],
     });
 
-    const rawContent = response.choices[0].message.content || "{}";
+    let rawContent = response.choices[0].message.content || "{}";
     console.log("\n🔍 Raw LLM Response:");
     console.log(rawContent.substring(0, 500)); // First 500 chars for debugging
+    
+    // Strip markdown code fences if present
+    rawContent = rawContent.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
     
     const data = JSON.parse(rawContent);
     const results = Array.isArray(data) ? data : data.results || [];
